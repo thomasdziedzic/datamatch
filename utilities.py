@@ -8,4 +8,4 @@ def readCSV(filename):
         return [row for row in contents]
 
 def lowerCSV(contents):
-    return [map(lambda x: x.lower(), row) for row in contents]
+    return [list(map(lambda x: x.lower(), row)) for row in contents]
