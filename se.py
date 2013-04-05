@@ -4,6 +4,8 @@ import csv
 from itertools import chain, combinations, groupby
 from collections import defaultdict
 
+import utilities
+
 matchings = defaultdict(list)
 
 def powerset(s):
@@ -19,15 +21,8 @@ with open('1.csv', newline='') as c1:
 
 num_columns = len(temp)
 
-reader1 = []
-reader2 = []
-with open('1.csv', newline='') as c1:
-    with open('2.csv', newline='') as c2:
-        reader1 = csv.reader(c1)
-        reader2 = csv.reader(c2)
-        
-        reader1 = [list(map(lambda a: a.lower(), x)) for x in reader1]
-        reader2 = [list(map(lambda a: a.lower(), x)) for x in reader2]
+reader1 = utilities.lowerCSV(utilities.readCSV('1.csv'))
+reader2 = utilities.lowerCSV(utilities.readCSV('2.csv'))
 
 # need to reverse order and remove []
 column_lists = powerset(list(range(num_columns)))
@@ -35,7 +30,7 @@ column_lists = powerset(list(range(num_columns)))
 total_matched_items1 = set()
 total_matched_items2 = set()
 
-for key, column_lists in groupby(column_lists, lambda x: len(x)):
+for key, column_lists in groupby(column_lists, len):
     # store these since we want multiple matches for the same column lengths
     temp_matched_items1 = set()
     temp_matched_items2 = set()
