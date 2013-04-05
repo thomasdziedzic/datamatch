@@ -17,13 +17,12 @@ with open('1.csv', newline='') as c1:
     # do we really have to do it this way?
     temp = csv.DictReader(c1).fieldnames
 
+num_columns = len(temp)
+
 reader1 = []
 reader2 = []
-num_columns = 0
 with open('1.csv', newline='') as c1:
     with open('2.csv', newline='') as c2:
-        num_columns = len(temp)
-
         reader1 = csv.reader(c1)
         reader2 = csv.reader(c2)
         
