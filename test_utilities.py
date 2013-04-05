@@ -2,11 +2,10 @@ import unittest
 import utilities
 
 class TestUtilityFunctions(unittest.TestCase):
-    def setUp(self):
-        self.filename = "./test_data/1.csv"
-    
     def test_readCSV(self):
-        contents = utilities.readCSV(self.filename)
+        filename = "./test_data/1.csv"
+        
+        contents = utilities.readCSV(filename)
        
         self.assertEqual(3, len(contents), 'There should be 3 rows in the file')
        
