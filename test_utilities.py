@@ -12,5 +12,14 @@ class TestUtilityFunctions(unittest.TestCase):
         for row in contents:
             self.assertEqual(6, len(row), 'There should be 6 columns per row')
 
+    def test_lowerCSV(self):
+        contents = [['A','a']]
+        
+        lower_contents = utilities.lowerCSV(contents)
+        
+        for row in lower_contents:
+            for column in row:
+                self.assertTrue(column.islower(), 'All strings should have been set to lower case')
+
 if __name__ == '__main__':
     unittest.main()
