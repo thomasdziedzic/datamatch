@@ -6,13 +6,15 @@ from collections import defaultdict
 
 import utilities
 
+MIN_COLUMNS_TO_MATCH = 2
+
 matchings = defaultdict(list)
 
 def powerset(s):
     p = list(chain.from_iterable(combinations(s, r) for r in range(len(s)+1)))
     p.reverse()
     # we only want a match if there are 2 or more column matches
-    return filter(lambda x: len(x) > 1, p)
+    return filter(lambda x: len(x) >= MIN_COLUMNS_TO_MATCH, p)
 
 temp = []
 with open('1.csv', newline='') as c1:
