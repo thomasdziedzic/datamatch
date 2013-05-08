@@ -71,6 +71,24 @@ def match_data(contents1, contents2, min_columns):
 
     return (matchings, total_matched_items1, total_matched_items2)
 
+def write_matches_csv(filename, matchings, contents1, contents2):
+    num_columns = len(contents1[0])
+    out_csv = []
+    empty_row = [''] * num_columns
+
+    with open(filename, 'w', newline='') as f:
+        matchings_writer = csv.writer(f)
+        
+        for i, i_matchings in matchings.items():
+            out_csv.append(contents1[i])
+            
+            for j in i_matchings:
+                out_csv.append(contents2[j])
+            
+            out_csv.append(empty_row)
+        
+        matchings_writer.writerows(out_csv)
+
 def write_no_matches_csv(filename, contents, matched_items):
     with open(filename, 'w', newline='') as f:
         writer = csv.writer(f)
