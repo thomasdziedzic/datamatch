@@ -2,7 +2,7 @@
 
 import utilities
 
-MIN_COLUMNS_TO_MATCH = 7
+MIN_COLUMNS_TO_MATCH = 2
 
 reader1 = utilities.lowerCSV(utilities.readCSV('1.csv'))
 reader2 = utilities.lowerCSV(utilities.readCSV('2.csv'))
