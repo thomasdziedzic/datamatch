@@ -16,12 +16,10 @@ def powerset(s):
     # we only want a match if there are 2 or more column matches
     return filter(lambda x: len(x) >= MIN_COLUMNS_TO_MATCH, p)
 
-temp = []
+num_columns = 0
 with open('1.csv', newline='') as c1:
     # do we really have to do it this way?
-    temp = csv.DictReader(c1).fieldnames
-
-num_columns = len(temp)
+    num_columns = len(csv.DictReader(c1).fieldnames)
 
 reader1 = utilities.lowerCSV(utilities.readCSV('1.csv'))
 reader2 = utilities.lowerCSV(utilities.readCSV('2.csv'))
