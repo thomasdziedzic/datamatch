@@ -70,3 +70,12 @@ def match_data(contents1, contents2, min_columns):
         total_matched_items2.update(temp_matched_items2)
 
     return (matchings, total_matched_items1, total_matched_items2)
+
+def write_no_matches_csv(filename, contents, matched_items):
+    with open(filename, 'w', newline='') as f:
+        writer = csv.writer(f)
+        
+        remaining_items = set(range(len(contents))).difference(matched_items)
+        
+        for remaining_item in remaining_items:
+            writer.writerow(contents[remaining_item])
